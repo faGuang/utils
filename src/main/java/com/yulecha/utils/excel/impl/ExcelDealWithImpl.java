@@ -237,9 +237,11 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Test
     @Override
     public void importTest() throws FileNotFoundException {
-        String readPath = MAC_EXCEL_PATH + "门店数据导出.xlsx";
+//        String readPath = MAC_EXCEL_PATH + "门店数据导出.xlsx";
 
-        List<OpsExcelDto> opsExcelDtos = EasyExcelFactory.read(new BufferedInputStream(new FileInputStream(readPath))).sheet(1).head(OpsExcelDto.class).doReadSync();
+        String readPath = excelPath + "小程序视频资料.xlsx";
+
+        List<OpsExcelDto> opsExcelDtos = EasyExcelFactory.read(new BufferedInputStream(new FileInputStream(readPath))).sheet().head(OpsExcelDto.class).doReadSync();
         opsExcelDtos.stream().forEach(dto -> System.out.println(dto.getNo()));
 
     }
