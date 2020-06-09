@@ -1,5 +1,7 @@
 package com.yulecha.utils.excel;
 
+import java.io.FileNotFoundException;
+
 /**
  * @ClassName：ExcelDealWith
  * @Description：
@@ -31,4 +33,9 @@ public interface ExcelDealWith {
 
 
     void exportExcel();
+
+    /**
+     * easyExcel 无实体类导入测试
+     */
+    void importTest() throws FileNotFoundException;
 }

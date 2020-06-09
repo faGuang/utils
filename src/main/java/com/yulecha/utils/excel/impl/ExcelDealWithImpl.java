@@ -11,8 +11,10 @@ import com.yulecha.utils.excel.dto.YjshowVideoDto;
 import com.yulecha.utils.util.BigDecimalUtils;
 import com.yulecha.utils.util.StreamUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.formula.functions.T;
 import org.junit.Test;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
@@ -33,6 +35,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
      * excel 文件存放地址
      */
     private static String excelPath = "D:/dealExcel/";
+    private static final String MAC_EXCEL_PATH = "/Users/mxx/softData/";
 
     @Test
     @Override
@@ -71,13 +74,17 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void countExcel() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "售后申请单报表-20200429000064.xlsx";
+//        String readPath = excelPath + "售后申请单报表-20200429000064.xlsx";
+        String readPath = MAC_EXCEL_PATH + "门店数据导出.xlsx";
 
         try {
-            Sheet sheet = new Sheet(1, 1, OpsExcelDto.class);
+//            ReadSheet sheet = new ReadSheet(1);
+
+//            Sheet sheet = new Sheet(1, 1, OpsExcelDto.class);
 
             // 这里 取出来的是 ExcelModel实体 的集合
-            List<Object> readList = EasyExcelFactory.read(new FileInputStream(readPath), sheet);
+            List<Object> readList = EasyExcel.read(new BufferedInputStream(new FileInputStream(readPath))).sheet(1).doReadSync();
+//            List<Object> readList = EasyExcelFactory.read(new FileInputStream(readPath), sheet);
             // 存 ExcelMode 实体的 集合
             List<OpsExcelDto> list = new ArrayList<>();
             for (Object obj : readList) {
@@ -227,6 +234,16 @@ public class ExcelDealWithImpl implements ExcelDealWith {
 //                .doWrite(data());
     }
 
+    @Test
+    @Override
+    public void importTest() throws FileNotFoundException {
+        String readPath = MAC_EXCEL_PATH + "门店数据导出.xlsx";
+
+        List<OpsExcelDto> opsExcelDtos = EasyExcelFactory.read(new BufferedInputStream(new FileInputStream(readPath))).sheet(1).head(OpsExcelDto.class).doReadSync();
+        opsExcelDtos.stream().forEach(dto -> System.out.println(dto.getNo()));
+
+    }
+
     private List<ExportDemoData> data() {
         List<ExportDemoData> list = new ArrayList<ExportDemoData>();
         for (int i = 0; i < 10; i++) {
@@ -236,5 +253,15 @@ public class ExcelDealWithImpl implements ExcelDealWith {
             list.add(data);
         }
         return list;
+    }
+
+    /**
+     * 同步按模型读（默认读取sheet0,从第2行开始读）
+     * @param filePath
+     * @param clazz 模型的类类型（excel数据会按该类型转换成对象）
+     * @return
+     */
+    public static List<T> syncReadModel(String filePath, Class clazz){
+        return EasyExcelFactory.read(filePath).sheet().head(clazz).doReadSync();
     }
 }

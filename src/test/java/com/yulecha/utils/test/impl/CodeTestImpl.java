@@ -78,7 +78,9 @@ public class CodeTestImpl implements CodeTest {
     @Test
     @Override
     public void test() {
-
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime minus = now.minusDays(5);
+        System.out.println(minus);
     }
 
     public static void main(String[] args) {
