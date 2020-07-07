@@ -26,9 +26,8 @@ public class DateUtils {
      * @return
      */
     public static String localDateTime2Str(LocalDateTime time) {
-        String timeStr = "";
         if (null == time) {
-            return timeStr;
+            return "";
         }
         return df.format(time);
     }

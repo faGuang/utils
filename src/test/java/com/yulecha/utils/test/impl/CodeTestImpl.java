@@ -2,6 +2,7 @@ package com.yulecha.utils.test.impl;
 
 import com.yulecha.utils.test.CodeTest;
 import com.yulecha.utils.test.dto.Person;
+import com.yulecha.utils.util.BigDecimalUtils;
 import net.sf.jsqlparser.statement.select.Skip;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -78,9 +79,10 @@ public class CodeTestImpl implements CodeTest {
     @Test
     @Override
     public void test() {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime minus = now.minusDays(5);
-        System.out.println(minus);
+        System.out.println("12344444".substring(1, 2));
+//        LocalDateTime now = LocalDateTime.now();
+//        LocalDateTime minus = now.minusDays(5);
+//        System.out.println(minus);
     }
 
     public static void main(String[] args) {
@@ -96,14 +98,53 @@ public class CodeTestImpl implements CodeTest {
     @Test
     @Override
     public void testBigFormater() {
-        BigDecimal bigDecimal = new BigDecimal("8");
-        System.out.println(Objects.equals(bigDecimal, BigDecimal.ZERO));
+//        BigDecimal bigDecimal = new BigDecimal("8");
+//        System.out.println(Objects.equals(bigDecimal, BigDecimal.ZERO));
+//        System.out.println(BigDecimalUtils.isNotZero(new BigDecimal("22")));
+//        System.out.println(BigDecimalUtils.isNotZero(new BigDecimal("0")));
+//        System.out.println(BigDecimalUtils.isNotZero(null));
+        System.out.println(BigDecimalUtils.customFormattedDecimalToPercentage(new BigDecimal("0.3455"), 1));
     }
 
     @Test
     @Override
     public void dateFormater() {
         System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now()));
+    }
+
+    @Test
+    @Override
+    public void dateSort() {
+        List<LocalDateTime> times = Arrays.asList(LocalDateTime.of(2009, 2, 23, 14, 50),
+                LocalDateTime.of(2008, 2, 23, 14, 50),
+                LocalDateTime.of(2010, 2, 23, 14, 50),
+                LocalDateTime.of(2022, 2, 23, 14, 50));
+        Optional<LocalDateTime> any = times.stream().sorted(Comparator.reverseOrder()).findFirst();
+        System.out.println(any.get());
+    }
+
+    @Test
+    @Override
+    public void testOptionalOrElse() {
+        List<String> strs = null;
+//        strs.add("哈哈");
+        List<String> list = Optional.ofNullable(strs).orElse(Arrays.asList("嘻嘻"));
+        System.out.println(list.size());
+        System.out.println(list.toString());
+    }
+
+    @Test
+    @Override
+    public void testMapContainKey() {
+        Map<String, String> maps = new HashMap<>();
+        System.out.println(maps.containsKey(null));
+    }
+
+    @Test
+    @Override
+    public void stringEndwithTest() {
+        String fileName = "hha.xlsx";
+        System.out.println(fileName.endsWith("xlsx"));
     }
 
     public enum  ssEnum{

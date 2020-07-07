@@ -41,7 +41,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void dealYjshowVideoUpload() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "小程序图片资料.xlsx";
+        String readPath = excelPath + "KS2020F魅力秀视频.xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单
@@ -111,7 +111,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void matchingSkc() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "N2020春夏产品目录.xlsx";
+        String readPath = excelPath + "匹配.xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单
@@ -161,7 +161,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void dealImportExcel() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "小程序图片资料(1).xlsx";
+        String readPath = excelPath + "NL2020 G波段(1).xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单

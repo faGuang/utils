@@ -36,4 +36,24 @@ public interface CodeTest {
      * 时间格式化
      */
     void dateFormater();
+
+    /**
+     * 时间排序
+     */
+    void dateSort();
+
+    /**
+     * 测试 optional orElse()
+     */
+    void testOptionalOrElse();
+
+    /**
+     * 测试 map 使用 containKey null 什么结果
+     */
+    void testMapContainKey();
+
+    /**
+     * 测试 String 的 endwith 方法
+     */
+    void stringEndwithTest();
 }

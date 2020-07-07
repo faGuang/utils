@@ -67,6 +67,19 @@ public class BigDecimalUtils {
     }
 
     /**
+     * 不为 0
+     * @param bigDecimal
+     * @return
+     */
+    public static boolean isNotZero(BigDecimal bigDecimal) {
+        if (null != bigDecimal && BigDecimal.ZERO.compareTo(bigDecimal) != 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * 需配合 IsNullConvertZero（自定义） 注解使用，在实体类中字段上加
      * @param obj
      * @return
