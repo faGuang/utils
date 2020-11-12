@@ -30,12 +30,4 @@ public interface ExcelDealWith {
      * 根据原excel表处理款号
      */
     void dealImportExcel();
-
-
-    void exportExcel();
-
-    /**
-     * easyExcel 无实体类导入测试
-     */
-    void importTest() throws FileNotFoundException;
 }

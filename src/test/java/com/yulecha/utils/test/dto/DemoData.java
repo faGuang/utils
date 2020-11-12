@@ -1,5 +1,6 @@
 package com.yulecha.utils.test.dto;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -13,7 +14,8 @@ import java.util.Date;
  **/
 @Data
 public class DemoData {
-    private String string;
+    @ExcelProperty(value = "单号")
+    private String record;
     private Date date;
     private Double doubleData;
 }

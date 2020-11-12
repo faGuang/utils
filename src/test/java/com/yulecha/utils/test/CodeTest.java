@@ -56,4 +56,56 @@ public interface CodeTest {
      * 测试 String 的 endwith 方法
      */
     void stringEndwithTest();
+
+    void testBigDecimalUtils();
+
+    /**
+     * 测试 conditonUtil 工具类
+     */
+    void testConditonUtil();
+
+    /**
+     * 测试对象转json
+     */
+    void testObject2JSON();
+
+    /**
+     * 字符串截取测试
+     */
+    void subStringTest();
+
+    /**
+     * 字符串切割成多段
+     */
+    void strSplit();
+
+    /**
+     * 注解测试
+     */
+    void testAnnotation();
+
+    /**
+     * 生成随机数
+     */
+    void randomNumber();
+
+    /**
+     * 计算时间
+     */
+    void countTime();
+
+    /**
+     * 测试list包含某个元素
+     */
+    void listContain();
+
+    /**
+     * 测试 StringBuffer
+     */
+    void StringBufferDelete();
+
+    /**
+     * 测试导出
+     */
+    void testExport();
 }

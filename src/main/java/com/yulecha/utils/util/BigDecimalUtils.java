@@ -106,4 +106,40 @@ public class BigDecimalUtils {
 
         return obj;
     }
+
+    /**
+     * 减法
+     *
+     * @param minus 减数
+     * @param subtracteds 被减数，支持多入参
+     * @return
+     */
+    public static BigDecimal subtract(BigDecimal minus, BigDecimal... subtracteds) {
+        for (BigDecimal subtracted : subtracteds) {
+            if (null == minus || null == subtracted) {
+                throw new RuntimeException("减数或被减数为空，减数：" + minus + "，被减数：" + subtracted);
+            }
+            minus = minus.subtract(subtracted);
+        }
+
+        return minus;
+    }
+
+    /**
+     * 乘法
+     *
+     * @param multiplier 乘数
+     * @param multiplicands 被乘数，支持多入参
+     * @return
+     */
+    public static BigDecimal multiply(BigDecimal multiplier, BigDecimal... multiplicands) {
+        for (BigDecimal multiplicand : multiplicands) {
+            if (null == multiplicand || null == multiplier) {
+                throw new RuntimeException("乘数或被乘数为空，乘数：" + multiplier + "，被乘数：" + multiplicand);
+            }
+            multiplier = multiplier.multiply(multiplicand);
+        }
+
+        return multiplier;
+    }
 }

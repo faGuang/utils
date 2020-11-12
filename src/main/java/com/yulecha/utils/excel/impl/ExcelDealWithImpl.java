@@ -41,7 +41,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void dealYjshowVideoUpload() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "KS2020F魅力秀视频.xlsx";
+        String readPath = excelPath + "KS2020H波段补.xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单
@@ -111,7 +111,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void matchingSkc() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "匹配.xlsx";
+        String readPath = excelPath + "ddeal.xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单
@@ -161,7 +161,7 @@ public class ExcelDealWithImpl implements ExcelDealWith {
     @Override
     public void dealImportExcel() {
         // 读取 excel 表格的路径
-        String readPath = excelPath + "NL2020 G波段(1).xlsx";
+        String readPath = excelPath + "L2021春夏A1-A3款号(1).xlsx";
 
         try {
             // sheetNo --> 读取哪一个 表单
@@ -207,43 +207,6 @@ public class ExcelDealWithImpl implements ExcelDealWith {
             strs.remove(mb);
             System.out.println(mb + "\t自在觉醒 A1\t" + strs.toString());
         }
-    }
-
-    @Test
-    @Override
-    public void exportExcel() {
-        String fileName = "D:/excludeOrIncludeWrite" + System.currentTimeMillis() + ".xlsx";
-
-        // 根据用户传入字段 假设我们要忽略 date
-        Set<String> excludeColumnFiledNames = new HashSet<String>();
-        excludeColumnFiledNames.add("date");
-        List<ExportDemoData> data = data();
-        for (ExportDemoData datum : data) {
-            BigDecimalUtils.null2Zero(datum);
-        }
-        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
-        EasyExcel.write(fileName, ExportDemoData.class).excludeColumnFiledNames(excludeColumnFiledNames).sheet("模板")
-                .doWrite(data);
-
-//        fileName = TestFileUtil.getPath() + "excludeOrIncludeWrite" + System.currentTimeMillis() + ".xlsx";
-//        // 根据用户传入字段 假设我们只要导出 date
-//        Set<String> includeColumnFiledNames = new HashSet<String>();
-//        includeColumnFiledNames.add("date");
-//        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
-//        EasyExcel.write(fileName, DemoData.class).includeColumnFiledNames(includeColumnFiledNames).sheet("模板")
-//                .doWrite(data());
-    }
-
-    @Test
-    @Override
-    public void importTest() throws FileNotFoundException {
-//        String readPath = MAC_EXCEL_PATH + "门店数据导出.xlsx";
-
-        String readPath = excelPath + "小程序视频资料.xlsx";
-
-        List<OpsExcelDto> opsExcelDtos = EasyExcelFactory.read(new BufferedInputStream(new FileInputStream(readPath))).sheet().head(OpsExcelDto.class).doReadSync();
-        opsExcelDtos.stream().forEach(dto -> System.out.println(dto.getNo()));
-
     }
 
     private List<ExportDemoData> data() {
